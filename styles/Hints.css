@@ -1,0 +1,13 @@
+.absent{
+    background-color: transparent;
+}
+
+.correct{
+    background-color: black;
+    border: none;
+}
+
+.present{
+    background-color: white;
+    border: none;
+}

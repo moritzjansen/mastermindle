@@ -1,10 +1,20 @@
-export default function GameRowGuesses(){
+import { useState } from "react"
+import { colorStrings } from "../constants/colors"
+import GuessBit from "./GuessBit"
+
+type Props = {
+    guess: number[]
+    selectedColumn: number
+    rowId: number
+    updateSelectedRow: (row: number, column: number) => void
+}
+
+export default function GameRowGuesses({guess, selectedColumn, rowId, updateSelectedRow}:Props){
     return (
-        <div className="flex flex-row justify-center gap-5 -mt-3 mb-2">
-            <div className="guess w-10 h-10 rounded-full bg-orange-100"></div>
-            <div className="guess w-10 h-10 rounded-full bg-orange-100"></div>
-            <div className="guess w-10 h-10 rounded-full bg-orange-100"></div>
-            <div className="guess w-10 h-10 rounded-full bg-orange-100"></div>
+        <div className="flex flex-row justify-center gap-2">
+            {guess.map((colorId, i) =>{
+                return <GuessBit id={i} colorId={colorId} selected={selectedColumn===i} updateSelectedRow={updateSelectedRow} rowId={rowId}></GuessBit>
+            })}
         </div>
     )
 }

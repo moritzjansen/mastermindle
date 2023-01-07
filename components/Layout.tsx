@@ -8,16 +8,18 @@ type Props = {
 }
 
 const Layout = ({ children, title = 'Mastermindle' }: Props) => (
-  <div className='flex flex-col justify-start h-full bg-gradient-to-br from-slate-200 to to-slate-400'>
+  <div className='flex flex-col justify-start h-full bg-gradient-to-b from-slate-300 to to-slate-100'>
     <Head>
       <title>{title}</title>
       <meta charSet="utf-8" />
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     </Head>
-    <header>
-      <h1 className='font-bold text-3xl text-center text-ca py-4 font-'>MASTERMINDLE</h1>
+    <header className='text-center'>
+      <h1 className='font-bold text-3xl text-ca py-2 font-'>MASTERMINDLE</h1>
     </header>
-    {children}
+    <main className='max-w-[297px] min-w-[297px] my-0 mx-auto flex flex-col flex-grow'>
+      {children}
+    </main>
   </div>
 )
 
