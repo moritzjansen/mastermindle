@@ -15,5 +15,5 @@ export default function GuessBit({id, colorId, selected, rowId, updateSelectedRo
     function clickHandler(){
         updateSelectedRow(rowId, id)
     }
-    return <div onClick={clickHandler} className={"w-10 h-10 rounded-full transition-shadow bg-" + colorStrings[colorId]  + (selected?' selected-cell':'')+ ((colorId === -1)? " guess-empty":" guess")}></div>
+    return <div onClick={clickHandler} className={"w-1/4 aspect-square rounded-full transition-shadow " + colorStrings[colorId]  + (selected?' selected-cell':'')+ ((colorId === -1)? " guess-empty":" guess")}></div>
 }

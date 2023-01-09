@@ -1,20 +1,20 @@
 export const colorStrings = {
-    '-1': "orange-100",
-    '0': "red-600",
-    '1': "orange-600",
-    '2': "yellow-400",
-    '3': "amber-700",
-    '4': "green-600",
-    '5': "sky-600",
-    '6': "fuchsia-600"
+    '-1': "bg-orange-100",
+    '0': "bg-red-600",
+    '1': "bg-orange-600",
+    '2': "bg-yellow-400",
+    '3': "bg-amber-700",
+    '4': "bg-green-600",
+    '5': "bg-sky-600",
+    '6': "bg-fuchsia-600"
 }
 
 export const accentColorStrings = {
-    '0': "red-500",
-    '1': "orange-500",
-    '2': "yellow-300",
-    '3': "amber-600",
-    '4': "green-500",
-    '5': "sky-500",
-    '6': "fuchsia-500"
+    '0': "hover:bg-red-500",
+    '1': "hover:bg-orange-500",
+    '2': "hover:bg-yellow-300",
+    '3': "hover:bg-amber-600",
+    '4': "hover:bg-green-500",
+    '5': "hover:bg-sky-500",
+    '6': "hover:bg-fuchsia-500"
 }
