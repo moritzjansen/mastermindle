@@ -4,6 +4,7 @@ import GameRow from '../components/GameRow'
 import GameRowGuesses from '../components/GameRowGuesses'
 import Layout from '../components/Layout'
 import { useEffect, useState } from 'react'
+import SolutionRow from '../components/SolutionRow'
 
 export type HintStatus = 'correct' | 'present' | 'absent' 
 
@@ -33,6 +34,7 @@ function IndexPage() {
   })
 
   const [isGameOver, setIsGameOver] = useState(false)
+  const [isGameWon, setIsGameWon] = useState(false)
 
   useEffect(()=>{
     let newSolution:number[] = []
@@ -108,6 +110,7 @@ function IndexPage() {
     if(!newHints.includes('absent') && !newHints.includes('present')){
       console.log('GG!')
       setIsGameOver(true)
+      setIsGameWon(true)
       setSelectedCell(-1)
     }
     else if(currentRow+1 === maxGuesses){
@@ -139,12 +142,13 @@ function IndexPage() {
   }
 
   return(
-    <Layout title="Mastermindle">
+    <Layout title="Bigbraindle">
       <div className='flex-col flex flex-grow'>
+        <SolutionRow solution = {solution} reveal = {isGameOver}></SolutionRow>
         <div className='flex-grow flex flex-col justify-center' id='GameRows'>
-          <div className='flex-grow flex flex-col max-h-[520px] justify-between'>
+          <div className='flex-grow flex flex-col max-h-[520px] justify-between z-10'>
             {guesses.map((guess, i)=>{
-              return <GameRow key={i} hint = {hints[i]} guess = {guess} id={i} isCurrentRow={currentRow==i}selectedColumn={currentRow==i?selectedCell:null} updateSelectedRow = {updateSelectedCell}></GameRow>
+              return <GameRow key={i} hint = {hints[i]} guess = {guess} id={i} currentRowID={currentRow}selectedColumn={currentRow==i?selectedCell:null} updateSelectedRow = {updateSelectedCell} isGameOver={isGameOver} isGameWon={isGameWon}></GameRow>
             })}
           </div>
         </div>

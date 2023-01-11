@@ -16,9 +16,9 @@ const Layout = ({ children, title = 'Mastermindle' }: Props) => (
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     </Head>
     <header className='text-center'>
-      <h1 className={'font-bold text-3xl md:text-5xl md:mt-8 py-2'}>MASTERMINDLE</h1>
+      <h1 className={'font-bold text-3xl text-slate-900 md:text-7xl md:mt-5 md:mb-2 py-2'}>BIGBRAINDLE</h1>
     </header>
-    <main className='max-w-[325px] md:max-w-[380px] px-4 w-full mx-auto flex flex-col flex-grow'>
+    <main className='max-w-[325px] md:max-w-[410px] px-4 w-full mx-auto flex flex-col flex-grow'>
       {children}
     </main>
   </div>

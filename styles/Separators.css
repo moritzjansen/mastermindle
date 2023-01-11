@@ -1,0 +1,43 @@
+.animate-separator {
+    animation: lightUp 2s infinite ease-in-out alternate;
+    --animation-delay: .5s;
+    --initial-delay: 4s;
+}
+
+.game-won {
+    --light-up-color: #64748b;
+}
+
+.game-lost {
+    --light-up-color: #b91c1c;
+}
+
+.game-row:nth-child(6) .animate-separator {
+    animation-delay: calc(var(--initial-delay) + var(--animation-delay)*1);
+}
+
+.game-row:nth-child(5) .animate-separator {
+    animation-delay: calc(var(--initial-delay) + var(--animation-delay)*2);
+}
+
+.game-row:nth-child(4) .animate-separator {
+    animation-delay: calc(var(--initial-delay) + var(--animation-delay)*3);
+}
+
+.game-row:nth-child(3) .animate-separator {
+    animation-delay: calc(var(--initial-delay) + var(--animation-delay)*4);
+}
+
+.game-row:nth-child(2) .animate-separator {
+    animation-delay: calc(var(--initial-delay) + var(--animation-delay)*5);
+}
+
+.game-row:nth-child(1) .animate-separator {
+    animation-delay: calc(var(--initial-delay) + var(--animation-delay)*6);
+}
+
+@keyframes lightUp {
+    100% {
+        fill: var(--light-up-color);
+    }
+}

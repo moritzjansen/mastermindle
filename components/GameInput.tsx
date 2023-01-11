@@ -20,7 +20,7 @@ export default function GameInput({setSelectedCellColor, checkGuess, undo}:Props
             <div className="aspect-square bg-transparent"></div>
 
             <div className="aspect-square bg-slate-600 rounded-sm  transition-all p-2 hover:shadow-xl hover:scale-105 hover:bg-slate-500" onClick={undo}>
-                <svg className="rotate-45" fill="#aaaaaa" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="-51.2 -51.2 614.40 614.40" enableBackground="new 0 0 512 512">
+                <svg className="rotate-45 m-1" fill="#aaaaaa" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="-51.2 -51.2 614.40 614.40" enableBackground="new 0 0 512 512">
                     <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                     <g id="SVGRepo_iconCarrier">
                         <path d="M256,1C179.8,1,111.7,34.4,64.9,87.2L0,22.3V193h170.7l-60.2-60.2C145.6,91.5,197.5,65,256,65c106.1,0,192,85.9,192,192 c0,106.1-85.9,192-192,192c-53,0-101-21.5-135.8-56.2L75,438c46.4,46.3,110.4,75,181,75c141.4,0,256-114.6,256-256S397.4,1,256,1z">

@@ -18,3 +18,13 @@ export const accentColorStrings = {
     '5': "hover:bg-sky-500",
     '6': "hover:bg-fuchsia-500"
 }
+
+export const colorHexCodes = {
+    '0': "#dc2626",
+    '1': "#ea580c",
+    '2': "#fbbf24",
+    '3': "#b45309",
+    '4': "#16a34a",
+    '5': "#0284c7",
+    '6': "#c026d3"
+}
