@@ -41,3 +41,9 @@
         fill: var(--light-up-color);
     }
 }
+
+/* @media(max-height:660px) {
+    .separator {
+        display: none;
+    }
+} */

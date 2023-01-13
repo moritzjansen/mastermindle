@@ -7,7 +7,9 @@ import '../styles/SolutionRow.css'
 import '../styles/Separators.css'
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  return (
+    <Component {...pageProps} />
+  ) 
 }
 
 export default MyApp;

@@ -143,17 +143,15 @@ function IndexPage() {
 
   return(
     <Layout title="Bigbraindle">
-      <div className='flex-col flex flex-grow'>
-        <SolutionRow solution = {solution} reveal = {isGameOver}></SolutionRow>
-        <div className='flex-grow flex flex-col justify-center' id='GameRows'>
-          <div className='flex-grow flex flex-col max-h-[520px] justify-between z-10'>
-            {guesses.map((guess, i)=>{
-              return <GameRow key={i} hint = {hints[i]} guess = {guess} id={i} currentRowID={currentRow}selectedColumn={currentRow==i?selectedCell:null} updateSelectedRow = {updateSelectedCell} isGameOver={isGameOver} isGameWon={isGameWon}></GameRow>
-            })}
-          </div>
+      <SolutionRow solution = {solution} reveal = {isGameOver}></SolutionRow>
+      <div className='flex-grow flex flex-col justify-center mb-1' id='GameRows'>
+        <div className='flex-grow flex flex-col max-h-[520px] justify-start z-10'>
+          {guesses.map((guess, i)=>{
+            return <GameRow key={i} hint = {hints[i]} guess = {guess} id={i} currentRowID={currentRow}selectedColumn={currentRow==i?selectedCell:null} updateSelectedRow = {updateSelectedCell} isGameOver={isGameOver} isGameWon={isGameWon}></GameRow>
+          })}
         </div>
-        <GameInput setSelectedCellColor={setSelectedCellColor} checkGuess={checkGuess} undo = {undo}></GameInput>
       </div>
+      <GameInput setSelectedCellColor={setSelectedCellColor} checkGuess={checkGuess} undo = {undo}></GameInput>
     </Layout>
   )
 }
