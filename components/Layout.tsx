@@ -9,7 +9,7 @@ type Props = {
 }
 
 const Layout = ({ children, title = 'Mastermindle' }: Props) => (
-  <div className='flex flex-col justify-start min-h-screen bg-slate-200'>
+  <div className='flex flex-col justify-start min-h-[100dvh] bg-slate-200'>
     <Head>
       <title>{title}</title>
       <meta charSet="utf-8" />
