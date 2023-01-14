@@ -15,6 +15,10 @@ const Layout = ({ children, title = 'Mastermindle' }: Props) => (
       <meta charSet="utf-8" />
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       <meta name="description" content="The wordle like color guessing game bigbraindle, where the user has to guess a sequence of four out of seven colors."></meta>
+      <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"></link>
+      <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"></link>
+      <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"></link>
+      <link rel="manifest" href="/site.webmanifest"></link>
     </Head>
     <header className='text-center'>
       <h1 className={'font-bold text-3xl text-slate-900 sm:text-7xl sm:mt-5 sm:mb-2 py-2'}>BIGBRAINDLE</h1>
