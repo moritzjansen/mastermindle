@@ -11,6 +11,6 @@ export default function ColorInput({colorId, setSelectedCellColor}: Props){
     }
 
     return (
-        <div className={"aspect-square rounded-sm transition-all hover-hover:hover:shadow-xl hover-hover:hover:scale-105 " + accentColorStrings[colorId] + " " + colorStrings[colorId]} onClick={clickHandler}></div>
+        <button className={"aspect-square rounded-sm transition-all hover-hover:hover:shadow-xl hover-hover:hover:scale-105 " + accentColorStrings[colorId] + " " + colorStrings[colorId]} onClick={clickHandler}></button>
     )
 }

@@ -20,7 +20,7 @@ export default function GameRow({guess, hint, id, selectedColumn, currentRowID, 
         
         <div className="game-row flex flex-col text-center w-full items-center">
             <div className="flex flex-row items-end w-[90%] justify-center">
-                <GameRowGuesses guess={guess} selectedColumn={selectedColumn} rowId={id} updateSelectedRow={updateSelectedRow}></GameRowGuesses>
+                <GameRowGuesses guess={guess} selectedColumn={selectedColumn} rowId={id} updateSelectedRow={updateSelectedRow} isSelectedRow={id===currentRowID}></GameRowGuesses>
                 <GameRowHints hint ={hint}></GameRowHints>
             </div>
             <svg className={"w-full h-auto fill-slate-400" + (isGameOver ? " animate-separator" : "") + (isGameWon ? " game-won": " game-lost")} viewBox="0 0 297 18" xmlns="http://www.w3.org/2000/svg">
