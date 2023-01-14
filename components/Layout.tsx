@@ -14,6 +14,8 @@ const Layout = ({ children, title = 'Mastermindle' }: Props) => (
       <title>{title}</title>
       <meta charSet="utf-8" />
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      <meta name="description" content="The wordle like color guessing game bigbraindle, where the user has to guess a sequence of four out of seven colors."></meta>
+      <link rel="shortcut icon" href="/favicon.ico" />
     </Head>
     <header className='text-center'>
       <h1 className={'font-bold text-3xl text-slate-900 sm:text-7xl sm:mt-5 sm:mb-2 py-2'}>BIGBRAINDLE</h1>
