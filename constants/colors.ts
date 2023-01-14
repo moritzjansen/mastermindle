@@ -10,13 +10,13 @@ export const colorStrings = {
 }
 
 export const accentColorStrings = {
-    '0': "hover:bg-red-500",
-    '1': "hover:bg-orange-500",
-    '2': "hover:bg-yellow-300",
-    '3': "hover:bg-amber-600",
-    '4': "hover:bg-green-500",
-    '5': "hover:bg-sky-500",
-    '6': "hover:bg-fuchsia-500"
+    '0': "hover-hover:hover:bg-red-500",
+    '1': "hover-hover:hover:bg-orange-500",
+    '2': "hover-hover:hover:bg-yellow-300",
+    '3': "hover-hover:hover:bg-amber-600",
+    '4': "hover-hover:hover:bg-green-500",
+    '5': "hover-hover:hover:bg-sky-500",
+    '6': "hover-hover:hover:bg-fuchsia-500"
 }
 
 export const colorHexCodes = {
