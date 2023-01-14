@@ -1,14 +1,10 @@
-import Link from 'next/link'
 import GameInput from '../components/GameInput'
 import GameRow from '../components/GameRow'
-import GameRowGuesses from '../components/GameRowGuesses'
 import Layout from '../components/Layout'
 import { useEffect, useState } from 'react'
 import SolutionRow from '../components/SolutionRow'
 
 export type HintStatus = 'correct' | 'present' | 'absent' 
-
-
 
 function IndexPage() {
   const maxGuesses = 6
@@ -17,35 +13,67 @@ function IndexPage() {
   const [currentRow, setCurrentRow] = useState(0)
   const [selectedCell, setSelectedCell] = useState(0)
 
-  const [guesses, setGuesses] = useState<number[][]>(() => {
-    let initialRows : number[][] = []
-    for(let i = 0; i < maxGuesses; i++){
-      initialRows.push([-1,-1,-1,-1])
-    }
-    return initialRows
-  })
+  const [guesses, setGuesses] = useState<number[][]>(initGuesses())
   
-  const [hints, setHints] = useState<HintStatus[][]>(() => {
-    let initialHints : HintStatus[][] = []
-    for(let i = 0; i < maxGuesses; i++){
-      initialHints.push(['absent', 'absent','absent','absent'])
-    }
-    return initialHints
-  })
+  const [hints, setHints] = useState<HintStatus[][]>(initHints())
 
   const [isGameOver, setIsGameOver] = useState(false)
   const [isGameWon, setIsGameWon] = useState(false)
 
   useEffect(()=>{
+    const initialState = JSON.parse(loadInitialState())
+    if(initialState){
+      if (initialState['isGameOver']){
+        initNewGame();
+      }
+      else{
+        setGameState(initialState)
+      }
+    }
+  },[])
+
+  useEffect(()=>{
+    saveState();
+  })
+
+  function initGuesses(){
+    let initialRows : number[][] = []
+    for(let i = 0; i < maxGuesses; i++){
+      initialRows.push([-1,-1,-1,-1])
+    }
+    return initialRows
+  }
+
+  function initHints(){
+    let initialHints : HintStatus[][] = []
+    for(let i = 0; i < maxGuesses; i++){
+      initialHints.push(['absent', 'absent','absent','absent'])
+    }
+    return initialHints
+  }
+
+  function initNewGame(){
+    setSolution(generateSolution())
+    setCurrentRow(0)
+    setSelectedCell(0)
+    setGuesses(initGuesses())
+    setHints(initHints())
+    setIsGameOver(false)
+    setIsGameWon(false)
+  }
+
+  function generateSolution(){
     let newSolution:number[] = []
     const possibilities = [0,1,2,3,4,5,6]
     for(let i = 0; i<4; i++){
       newSolution.push(possibilities.splice(Math.floor((Math.random() * possibilities.length)), 1)[0])
     }
-    setSolution(newSolution)
-    console.log(newSolution)
-  },[])
+    return newSolution
+  }
 
+  function loadInitialState(){
+    return localStorage.getItem('gameState')
+  }
 
   function setSelectedCellColor(colorId: number){
     if (isGameOver)
@@ -123,6 +151,34 @@ function IndexPage() {
     }
   }
 
+  function getGameState(){
+    let gameState = {
+      'solution':solution,
+      'guesses':guesses,
+      'hints':hints,
+      'currentRow':currentRow,
+      'selectedCell':selectedCell,
+      'isGameOver':isGameOver,
+      'isGameWon':isGameWon
+    }
+    return gameState
+  }
+
+  function saveState(){
+    let gameState = getGameState()
+    localStorage.setItem('gameState', JSON.stringify(gameState))
+  }
+
+  function setGameState({solution, guesses, hints, currentRow, selectedCell, isGameOver, isGameWon}){
+    setSolution(solution)
+    setGuesses(guesses)
+    setHints(hints)
+    setCurrentRow(currentRow)
+    setSelectedCell(selectedCell)
+    setIsGameOver(isGameOver)
+    setIsGameWon(isGameWon)
+  }
+
   function undo(){
     if(isGameOver){
       return
@@ -144,12 +200,10 @@ function IndexPage() {
   return(
     <Layout title="Bigbraindle">
       <SolutionRow solution = {solution} reveal = {isGameOver}></SolutionRow>
-      <div className='flex-grow flex flex-col justify-center mb-1' id='GameRows'>
-        <div className='flex-grow flex flex-col max-h-[520px] justify-start z-10'>
-          {guesses.map((guess, i)=>{
-            return <GameRow key={i} hint = {hints[i]} guess = {guess} id={i} currentRowID={currentRow}selectedColumn={currentRow==i?selectedCell:null} updateSelectedRow = {updateSelectedCell} isGameOver={isGameOver} isGameWon={isGameWon}></GameRow>
-          })}
-        </div>
+      <div className='flex-grow flex flex-col max-h-[520px]justify-start z-10'>
+        {guesses.map((guess, i)=>{
+          return <GameRow key={i} hint = {hints[i]} guess = {guess} id={i} currentRowID={currentRow}selectedColumn={currentRow==i?selectedCell:null} updateSelectedRow = {updateSelectedCell} isGameOver={isGameOver} isGameWon={isGameWon}></GameRow>
+        })}
       </div>
       <GameInput setSelectedCellColor={setSelectedCellColor} checkGuess={checkGuess} undo = {undo}></GameInput>
     </Layout>
